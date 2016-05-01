@@ -1,0 +1,26 @@
+{
+  "name": "prettify-time",
+  "version": "1.0.0",
+  "description": "Takes seconds and turns it into human readable string. See examples.",
+  "main": "PrettifyTime.min.js",
+  "scripts": {
+    "test": "mocha ./tests/*-spec.js",
+    "test:dev": "mocha ./tests/*-spec.js --watch",
+    "compress": "uglifyjs src/app.js > PrettifyTime.min.js"
+  },
+  "keywords": [
+    "time",
+    "convert",
+    "prettify",
+    "human",
+    "readable",
+    "duration"
+  ],
+  "author": "Árni Reynir Óskarsson",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "uglify-js": "^2.6.2"
+  }
+}
