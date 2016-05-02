@@ -1,5 +1,5 @@
 # prettify-time
-
+[ ![Codeship Status for arnireynir/prettify-time](https://codeship.com/projects/fcf26af0-f28d-0133-1d88-521033f49c46/status?branch=master)](https://codeship.com/projects/149505)
 Turns seconds into human readable text. 
 
 ## Install
