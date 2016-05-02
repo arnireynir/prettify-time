@@ -7,8 +7,8 @@
  Converts seconds into human readable text,
  
  
-     PrettifyTime(3600) // Returns "1h"
-     PrettifyTime(5400) // Return "1h 30m"
+     PrettifyTime.duration(3600) // Returns "1h"
+     PrettifyTime.duration(5400) // Return "1h 30m"
  ...more to come
 
 ## Install
