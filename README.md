@@ -32,9 +32,4 @@
     PrettifyTime.duration(3600, ['h','m','s']); // Returns "1h"
     PrettifyTime.duration(-3600); // Returns "-1h"
     
-    
-    
-    
     For more examples you look at the tests.
-
-    
