@@ -19,9 +19,9 @@
         .duration(seconds, units, displayZeroValues);
 
         Type:
-        seconds: number,
-        units: Array containg any of these options ['h','m', 's']. Default is ['h','m']
-        displayZeroValues: boolean // Default false
+            seconds: number,
+            units: Array containg any of these options ['h','m', 's']. Default is ['h','m']
+            displayZeroValues: boolean // Default false
 
 ## Examples
     // ES6
