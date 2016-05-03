@@ -37,7 +37,38 @@ var PrettifyTime = {
       seconds = seconds % unit.seconds;
     });
     return (negative ? '-' : '') + duration.join(' ') || '0h';
-  }
+  },
+
+  durationToSeconds: function(duration) {
+        if (typeof duration !== 'string' || duration === '') {
+            return undefined;
+        }
+
+        duration = duration.toString().trim().toLowerCase().replace(',','.');
+        if(duration.charAt(0) === ".") {
+          duration = "0" + duration;
+        }
+
+        var unitsMap = {
+            m: 60,
+            h: 3600
+        };
+        
+        var seconds = 0;
+        var defaultUnit = 'h';
+        var unit;
+        duration = duration.replace(/([a-z])([0-9]+[a-z])/g, '$1 $2');
+        duration.split(' ').forEach(function (value) {
+            unit = value.slice(-1);
+            if (!(unit in unitsMap)) {
+                unit = defaultUnit;
+            }
+            seconds += value.replace(unit, '') * unitsMap[unit];
+        });
+
+        return seconds;
+    },
+
 }
 
 module.exports = PrettifyTime;
