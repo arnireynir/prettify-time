@@ -1,5 +1,5 @@
 var PrettifyTime = {
-  duration: function (seconds, timeUnits, displayZeroValues) {
+  secondsToDuration: function (seconds, timeUnits, displayZeroValues) {
     if (isNaN(seconds)) {
       return undefined;
     }
@@ -53,11 +53,11 @@ var PrettifyTime = {
             m: 60,
             h: 3600
         };
-        
+
         var seconds = 0;
         var defaultUnit = 'h';
         var unit;
-        duration = duration.replace(/([a-z])([0-9]+[a-z])/g, '$1 $2');
+        // duration = duration.replace(/([a-z])([0-9]+[a-z])/g, '$1 $2');
         duration.split(' ').forEach(function (value) {
             unit = value.slice(-1);
             if (!(unit in unitsMap)) {

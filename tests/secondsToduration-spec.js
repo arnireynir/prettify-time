@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var PrettifyTime = require('../src/PrettifyTime.js');
 
-describe('Duration both negative and positve time', () => {
+describe('Conver seconds duration to string both negative and positve time', () => {
 
   it('Should return "0h" as default zero', () => {
     expect(PrettifyTime.duration(-0)).to.equal('0h');
