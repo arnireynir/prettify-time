@@ -1,5 +1,26 @@
+var extract = function(duration) {
+      var result = {"h":0,"m":0,"s":0};
+
+      if(duration) {
+        var stringDuration = duration.join(' ');
+        var arr = stringDuration.match(/([0-9]+[a-z])/gm);
+        console.log("arrBarr", arr);
+
+        if (arr !== null) {
+          arr.forEach(function(item) {
+            var unit = item.slice(-1);
+            var value = item.slice(0,-1)
+            result[unit] = value;
+          });
+        }
+      }
+      // var result will be return value in version3
+      console.log("WOW",result);
+      return result
+}
+
 var PrettifyTime = {
-  duration: function (seconds, timeUnits, displayZeroValues) {
+  secondsToDuration: function (seconds, timeUnits, displayZeroValues) {
     if (isNaN(seconds)) {
       return undefined;
     }
@@ -37,24 +58,9 @@ var PrettifyTime = {
       seconds = seconds % unit.seconds;
     });
 
-
-    var result = {"h":0,"m":0,"s":0};
-
-
-    if(duration) {
-      var arr = duration.match(/([0-9]+[a-z])/gm);
-
-      arr.forEach(function(item) {
-        var unit = item.slice(-1);
-        var value = item.slice(0,-1)
-        result[unit] = value;
-      });
-
-      result.duration = (negative ? '-' : '') + duration.join(' ');
-      console.log("res", result);
-    }
-
-    return '0h' || (negative ? '-' : '') + duration.join(' ') || '0h';
+    extract(duration);
+    
+    return (negative ? '-' : '') + duration.join(' ') || '0h';
   },
 
   durationToSeconds: function(duration) {
