@@ -1,5 +1,6 @@
 # prettify-time
-[ ![Codeship Status for arnireynir/prettify-time](https://codeship.com/projects/fcf26af0-f28d-0133-1d88-521033f49c46/status?branch=master)](https://codeship.com/projects/149505) [![codecov](https://codecov.io/gh/arnireynir/prettify-time/branch/master/graph/badge.svg)](https://codecov.io/gh/arnireynir/prettify-time)
+[ ![Codeship Status for arnireynir/prettify-time](https://codeship.com/projects/fcf26af0-f28d-0133-1d88-521033f49c46/status?branch=master)](https://codeship.com/projects/149505)
+[![Codecov branch](https://img.shields.io/codecov/c/github/codecov/example-python/master.svg?maxAge=2592000)]()
 
 
 [![NPM](https://nodei.co/npm/prettify-time.png)](https://nodei.co/npm/prettify-time/)

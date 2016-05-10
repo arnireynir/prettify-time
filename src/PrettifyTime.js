@@ -1,5 +1,5 @@
 var PrettifyTime = {
-  secondsToDuration: function (seconds, timeUnits, displayZeroValues) {
+  duration: function (seconds, timeUnits, displayZeroValues) {
     if (isNaN(seconds)) {
       return undefined;
     }
@@ -36,12 +36,30 @@ var PrettifyTime = {
       }
       seconds = seconds % unit.seconds;
     });
-    return (negative ? '-' : '') + duration.join(' ') || '0h';
+
+
+    var result = {"h":0,"m":0,"s":0};
+
+
+    if(duration) {
+      var arr = duration.match(/([0-9]+[a-z])/gm);
+
+      arr.forEach(function(item) {
+        var unit = item.slice(-1);
+        var value = item.slice(0,-1)
+        result[unit] = value;
+      });
+
+      result.duration = (negative ? '-' : '') + duration.join(' ');
+      console.log("res", result);
+    }
+
+    return '0h' || (negative ? '-' : '') + duration.join(' ') || '0h';
   },
 
   durationToSeconds: function(duration) {
         if (typeof duration !== 'string' || duration === '') {
-            return undefined;
+          return undefined;
         }
 
         duration = duration.toString().trim().toLowerCase().replace(',','.');
@@ -57,7 +75,8 @@ var PrettifyTime = {
         var seconds = 0;
         var defaultUnit = 'h';
         var unit;
-        // duration = duration.replace(/([a-z])([0-9]+[a-z])/g, '$1 $2');
+
+        duration = duration.replace(/([a-z])([0-9]+[a-z])/g, '$1 $2');
         duration.split(' ').forEach(function (value) {
             unit = value.slice(-1);
             if (!(unit in unitsMap)) {
