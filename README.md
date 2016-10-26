@@ -11,6 +11,8 @@
      PrettifyTime.durationToSeconds("1h 30m") // Return 3600
  ...more to come
 
+ now with version2 returning object, you can fish up more information.
+
 ## Install
     npm i prettify-time
 
