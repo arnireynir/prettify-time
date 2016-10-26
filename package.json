@@ -1,12 +1,13 @@
 {
   "name": "prettify-time",
-  "version": "1.0.1",
-  "description": "Takes seconds and turns it into human readable string. See examples.",
+  "version": "2.0.0",
+  "description": "Takes seconds and turns it into human readable string.",
   "main": "PrettifyTime.min.js",
   "scripts": {
     "test": "mocha ./tests/*-spec.js",
     "test:dev": "mocha ./tests/*-spec.js --watch",
-    "compress": "uglifyjs src/app.js > PrettifyTime.min.js"
+    "prepublish": "uglifyjs src/PrettifyTime.js > PrettifyTime.min.js",
+    "coverage": "istanbul cover _mocha ./tests/*-spec.js -- -R spec && codecov"
   },
   "keywords": [
     "time",
@@ -20,11 +21,15 @@
     "type": "git",
     "url": "https://github.com/arnireynir/prettify-time"
   },
+  "tonicExampleFilename": "./src/example.js",
   "author": "Árni Reynir Óskarsson",
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.5.0",
+    "istanbul": "^0.4.3",
+    "karma": "^0.13.22",
     "mocha": "^2.4.5",
-    "uglify-js": "^2.6.2"
+    "uglify-js": "^2.6.2",
+    "codecov": "^1.0.1"
   }
 }
