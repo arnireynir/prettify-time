@@ -14,29 +14,28 @@
 ## Install
     npm i prettify-time
 
-## Usages
-    Type for secondsToDuration:
-      seconds: number,
-      units: array
-
-    Type for durationToSeconds:
-        time: string,
-
 ## API
     PrettifyTime
-      displayZeroValues: Default is false.
-
         .secondsToDuration(seconds, units, displayZeroValues);
 
-        Type:
-            seconds: number,
-            units: Array containing any of these options ['h','m', 's']. Default is ['h','m']
-            displayZeroValues: boolean // Default false
+            Type:
+                seconds: number,
+                units: Array containing any of these options ['h','m', 's']. Default is ['h','m']
+                displayZeroValues: boolean // Default false
 
         .durationToSeconds(time);
 
-        Type:
-            time: string,
+            Type:
+                time: string,
+
+        returns
+            {
+                "h":number,
+                "m":number,
+                "s":number,
+                totalTime: string,
+                totalSeconds: number
+            }
 
 ## Examples
     // ES6
