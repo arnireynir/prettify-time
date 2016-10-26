@@ -1,10 +1,17 @@
+var timeObject = {
+    "h":0,
+    "m":0,
+    "s":0,
+    totalTime: undefined,
+    totalSeconds: undefined
+}
+
 var extract = function(duration) {
-      var result = {"h":0,"m":0,"s":0};
+      var result = timeObject;
 
       if(duration) {
         var stringDuration = duration.join(' ');
         var arr = stringDuration.match(/([0-9]+[a-z])/gm);
-        console.log("arrBarr", arr);
 
         if (arr !== null) {
           arr.forEach(function(item) {
@@ -14,16 +21,11 @@ var extract = function(duration) {
           });
         }
       }
-      // var result will be return value in version3
-      console.log("WOW",result);
       return result
 }
 
 var PrettifyTime = {
   secondsToDuration: function (seconds, timeUnits, displayZeroValues) {
-    if (isNaN(seconds)) {
-      return undefined;
-    }
 
     var negative = seconds < 0;
     seconds = Math.abs(seconds);
@@ -58,22 +60,29 @@ var PrettifyTime = {
       seconds = seconds % unit.seconds;
     });
 
-    extract(duration);
-    
-    return (negative ? '-' : '') + duration.join(' ') || '0h';
+    var time = extract(duration);
+    time.totalTime = (negative ? '-' : '') + duration.join(' ') || '0h';
+    return time;
   },
 
   durationToSeconds: function(duration) {
         if (typeof duration !== 'string' || duration === '') {
-          return undefined;
+          return timeObject;
         }
 
         duration = duration.toString().trim().toLowerCase().replace(',','.');
+
+        var isNegative = /-/.test(duration);
+        if(isNegative) {
+            duration = duration.replace(/-/g,'');
+        }
+        
         if(duration.charAt(0) === ".") {
           duration = "0" + duration;
         }
 
         var unitsMap = {
+            s: 1,
             m: 60,
             h: 3600
         };
@@ -82,7 +91,7 @@ var PrettifyTime = {
         var defaultUnit = 'h';
         var unit;
 
-        duration = duration.replace(/([a-z])([0-9]+[a-z])/g, '$1 $2');
+        duration = duration.replace(/([a-z])([0-9]+[a-z])/g, '$1 $2 $3');
         duration.split(' ').forEach(function (value) {
             unit = value.slice(-1);
             if (!(unit in unitsMap)) {
@@ -91,7 +100,10 @@ var PrettifyTime = {
             seconds += value.replace(unit, '') * unitsMap[unit];
         });
 
-        return seconds;
+        var time = this.secondsToDuration(seconds);
+        time.totalSeconds = isNegative ? -seconds : seconds;
+        return time;
+
     },
 
 }

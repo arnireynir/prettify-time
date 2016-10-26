@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha ./tests/*-spec.js",
     "test:dev": "mocha ./tests/*-spec.js --watch",
-    "compress": "uglifyjs src/app.js > PrettifyTime.min.js",
+    "prepublish": "uglifyjs src/app.js > PrettifyTime.min.js",
     "coverage": "istanbul cover _mocha ./tests/*-spec.js -- -R spec && codecov"
   },
   "keywords": [
