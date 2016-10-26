@@ -6,32 +6,37 @@
 [![NPM](https://nodei.co/npm/prettify-time.png)](https://nodei.co/npm/prettify-time/)
 
 ## Description
- Converts seconds into human readable text,
-
-
-     PrettifyTime.duration(3600) // Returns "1h"
-     PrettifyTime.duration(5400) // Return "1h 30m"
+ Converts seconds into human readable text and back.
+     PrettifyTime.secondsToDuration(3600) // Returns "1h"
+     PrettifyTime.durationToSeconds("1h 30m") // Return 3600
  ...more to come
 
 ## Install
     npm i prettify-time
 
 ## Usages
-    Type:
+    Type for secondsToDuration:
       seconds: number,
       units: array
 
+    Type for durationToSeconds:
+        time: string,
 
 ## API
     PrettifyTime
       displayZeroValues: Default is false.
 
-        .duration(seconds, units, displayZeroValues);
+        .secondsToDuration(seconds, units, displayZeroValues);
 
         Type:
             seconds: number,
-            units: Array containg any of these options ['h','m', 's']. Default is ['h','m']
+            units: Array containing any of these options ['h','m', 's']. Default is ['h','m']
             displayZeroValues: boolean // Default false
+
+        .durationToSeconds(time);
+
+        Type:
+            time: string,
 
 ## Examples
     // ES6
@@ -39,10 +44,16 @@
 
     var PrettifyTime = require('prettify-time');
 
-    PrettifyTime.duration(3600); // Returns "1h"
-    PrettifyTime.duration(3600, ['h','m','s'], true); // Returns "1h 0m 0s"
-    PrettifyTime.duration(3600, ['h','m','s']); // Returns "1h"
-    PrettifyTime.duration(-3600); // Returns "-1h"
+    PrettifyTime.secondsToDuration(3600).totalTime; // Returns "1h"
+    PrettifyTime.secondsToDuration(3600, ['h','m','s'], true).totalTime; // Returns "1h 0m 0s"
+    PrettifyTime.secondsToDuration(3600, ['h','m','s']).totalTime; // Returns "1h"
+    PrettifyTime.secondsToDuration(-3600).totalTime; // Returns "-1h"
+
+
+    PrettifyTime.durationToSeconds("1h").totalSeconds; // Returns "3600"
+    PrettifyTime.durationToSeconds("1h 30m").totalSeconds; // Returns "5400"
+    PrettifyTime.durationToSeconds("1h 30m").h; // Returns "1"
+    PrettifyTime.durationToSeconds(-1h).totalSeconds; // Returns "-3600"
 
 
     For more examples you look at the tests.
