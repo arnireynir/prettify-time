@@ -31,8 +31,16 @@ describe("Convert duration to seconds", function() {
     expect(PrettifyTime.durationToSeconds(".5h").totalSeconds).to.equal(1800);
   });
 
-  it.only("Take in -1h 30m and return -5400s", function() {
+  it(".5 turns into 1800", function() {
+    expect(PrettifyTime.durationToSeconds(".5").totalSeconds).to.equal(1800);
+  });
+
+  it("Take in -1h 30m and return -5400s", function() {
     expect(PrettifyTime.durationToSeconds("-1h 30m").totalSeconds).to.equal(-5400);
+  });
+
+  it("Take in 1 3600s", function() {
+    expect(PrettifyTime.durationToSeconds("1").totalSeconds).to.equal(3600);
   });
 
   it("1m 30s turns into 90s", function() {
