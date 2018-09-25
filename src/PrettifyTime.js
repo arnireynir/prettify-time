@@ -1,12 +1,19 @@
-const PrettifyTime = (
-  seconds,
-  options = { timeUnit: ["h", "m"], showZeroValues: false }
-) => {
-  const negative = seconds < 0;
-  const { timeUnit, showZeroValues } = options;
+"use strict";
+
+exports.__esModule = true;
+var PrettifyTime = function PrettifyTime(seconds) {
+  var options =
+    arguments.length > 1 && arguments[1] !== undefined
+      ? arguments[1]
+      : { timeUnit: ["h", "m"], showZeroValues: false };
+
+  var negative = seconds < 0;
+  var timeUnit = options.timeUnit,
+    showZeroValues = options.showZeroValues;
+
   seconds = Math.abs(seconds);
 
-  const units = {
+  var units = {
     d: 86400,
     h: 3600,
     m: 60,
@@ -25,4 +32,4 @@ const PrettifyTime = (
   return (negative ? "-" : "") + duration.join(" ") || "0h";
 };
 
-export default PrettifyTime;
+exports.default = PrettifyTime;
